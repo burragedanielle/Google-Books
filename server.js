@@ -11,22 +11,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static Assets
-if (process.env.Node_ENV === 'production') {
-    app.use(express.static('client/build'));
-}
+const root = path.join(__dirname, 'client', 'build')
+app.use(express.static(root));
 
 // Routes
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-app.use('/api/', routes);
+    res.sendFile('index.html', { root });
+})
+app.use('/search', routes);
 
 //Backend Setup
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googleBooksDB',
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/heroku_pbdk8gz9';
+
+console.log('This is the Mongo URI', MONGODB_URI);
+
+mongoose.connect(MONGODB_URI),
     {
         useCreateIndex: true,
         useNewUrlParser: true
-    });
+    }
 
 const db = mongoose.connection;
 
