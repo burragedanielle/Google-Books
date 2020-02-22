@@ -7,19 +7,19 @@ import API from '../utils/API';
 class Main extends Component {
     state = {
         books: [],
-        query: '',
+        q: '',
         message: 'Begin Book Search!'
     };
 
-    handleInputChange = e => {
-        const { name, value } = e.target;
+    handleInputChange = event => {
+        const { name, value } = event.target;
         this.setState({
             [name]: value
         });
     };
 
     searchBook = () => {
-        API.searchBook(this.state.query)
+        API.searchBook(this.state.q)
             .then(res =>
                 this.setState({
                     books: res.data
@@ -33,8 +33,8 @@ class Main extends Component {
             );
     };
 
-    handleSearch = e => {
-        e.preventDefault();
+    handleFormSubmit = event => {
+        event.preventDefault();
         this.searchBook();
     }
 
@@ -42,8 +42,10 @@ class Main extends Component {
         return (
             <React.Fragment>
                 <Header />
-                <SearchArea searchBook={this.searchBook} handleSearch={this.handleSearch}
-                    query={this.state.query} />
+                <SearchArea
+                    handleInputChange={this.handleInputChange}
+                    handleFormSubmit={this.handleFormSubmit}
+                    q={this.state.q} />
                 <Books books={this.state.books} />
             </React.Fragment>
         );

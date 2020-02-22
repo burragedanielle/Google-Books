@@ -4,7 +4,7 @@ const apiRoute = require('./api');
 
 //API Route
 // @desc takes us into API route file to find our three routes, books, google and index. 
-router.use('/api/', apiRoute);
+router.use('/api', apiRoute);
 
 //No API Hit
 router.use((req, res) => {
