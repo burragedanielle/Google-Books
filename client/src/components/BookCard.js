@@ -13,6 +13,7 @@ const BookCard = (props) => {
                 <div className='card-footer'>
                     <p className='card-text'>{props.published}</p>
                 </div>
+                <button className='btn' onClick={props.handleSave()}></button>
             </div>
         </div>
     );

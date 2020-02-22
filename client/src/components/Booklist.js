@@ -1,9 +1,7 @@
-// import React from 'react';
-// import BookCard from './BookCard';
+import React from 'react';
 
-// const Booklist = (props) => {
-//     console.log(props.books);
-
-// }
-
-// export default Booklist;
+export const BookList = ({ children }) => {
+    <ul className='list-group'>
+        {children}
+    </ul>
+};

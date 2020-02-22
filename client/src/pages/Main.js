@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import BookCard from '../components/BookCard';
 import SearchArea from '../components/SearchArea';
+// import BookList from '../components/BookList';
 import API from '../utils/API';
 
 class Main extends Component {
+
     state = {
         books: [],
         q: '',
@@ -58,7 +60,8 @@ class Main extends Component {
                                             image={book.volumeInfo.imageLinks.thumbnail}
                                             title={book.volumeInfo.title}
                                             author={book.volumeInfo.authors}
-                                            published={book.volumeInfo.publishedDate} />
+                                            published={book.volumeInfo.publishedDate}
+                                            handleSave={() => this.handleSave(book.id)} />
                                     })
                                 }
                             </div>
