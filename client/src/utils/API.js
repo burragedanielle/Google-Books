@@ -4,7 +4,7 @@ const axios = require('axios');
 
 export default {
     searchBook: (query) => {
-        axios.get('/api/google', { params: { query: 'title:' + query } });
+        return axios.get('/api/google', { params: { query: 'title:' + query } });
     },
     getSavedBooks: () => {
         return axios.get('/api/books');
