@@ -11,14 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static Assets
-// const root = path.join(__dirname, 'client', 'build')
-// app.use(express.static(root));
+const root = path.join(__dirname, 'build')
+app.use(express.static(root));
 
 // Routes
-app.get('*', function (req, res) {
-    const index = path.join(__dirname, 'build', 'index.html');
-    res.sendFile(index);
-});
+app.get("*", (req, res) => {
+    res.sendFile('index.html', { root });
+})
 app.use('/search', routes);
 
 //Backend Setup
