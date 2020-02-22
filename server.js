@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static Assets
-const root = path.join(__dirname, 'build')
+const root = path.join(__dirname, 'client', 'build')
 app.use(express.static(root));
 
 // Routes
