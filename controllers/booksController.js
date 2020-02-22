@@ -16,5 +16,15 @@ module.exports = {
             .then(newBook => res.json(newBook))
             .catch(err => res.status(404).json(err));
     },
-
-}
+    remove: (req, res) => {
+        db.Book.findById(req.params.id)
+            .then(foundBook => foundBook.remove())
+            .then(foundBook => res.json(foundBook))
+            .catch(err => res.status(404).json(err));
+    },
+    update: (req, res) => {
+        db.Book.findOneAndUpdate({ id: req.params.id }, req.body)
+            .then(foundBook => res.json(foundBook))
+            .catch(err => res.status(404).json(err));
+    }
+};

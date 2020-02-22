@@ -7,9 +7,10 @@ router.route('/')
     .get(booksController.findAll)
     .post(booksController.create);
 
+// Finding a specific book
 router.route('/:id')
-    .get(bookController.findById)
-    .put(bookController.update)
-    .delete(bookController.remove);
+    .get(booksController.findById)
+    .put(booksController.update)
+    .delete(booksController.remove);
 
 module.exports = router;

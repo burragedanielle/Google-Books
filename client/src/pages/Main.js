@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import Books from '../components/Books';
+import BookCard from '../components/BookCard';
 import SearchArea from '../components/SearchArea';
 import API from '../utils/API';
 
@@ -22,7 +22,7 @@ class Main extends Component {
         API.searchBook(this.state.q)
             .then(res =>
                 this.setState({
-                    books: res.data
+                    books: [res.data]
                 })
             )
             .catch(() =>
@@ -46,7 +46,27 @@ class Main extends Component {
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                     q={this.state.q} />
-                <Books books={this.state.books} />
+
+                <div className='container'>
+                    {
+                        this.state.books.length ? (
+                            <div className='row'>
+                                {
+                                    this.state.books.map((book, i) => {
+                                        return <BookCard
+                                            key={i}
+                                            image={book.volumeInfo.imageLinks.thumbnail}
+                                            title={book.volumeInfo.title}
+                                            author={book.volumeInfo.authors}
+                                            published={book.volumeInfo.publishedDate} />
+                                    })
+                                }
+                            </div>
+                        ) : (
+                                <h2 className='text-center'>{this.state.message}</h2>
+                            )
+                    }
+                </div>
             </React.Fragment>
         );
     }

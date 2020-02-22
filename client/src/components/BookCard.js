@@ -3,8 +3,8 @@ import '../App.css';
 
 const BookCard = (props) => {
     return (
-        <div className='col-sm-3'>
-            <div className='card h-100'>
+        <div className='col-lg-12'>
+            <div className='card'>
                 <img src={props.image} className='card-img-top' alt='' />
                 <div className='card-body'>
                     <h5 className='card-title'>{props.title}</h5>

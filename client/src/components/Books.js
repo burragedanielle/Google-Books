@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import Booklist from './Booklist';
+// import React from 'react';
+// import BookCard from './BookCard';
 
-class Books extends Component {
-    render(props) {
-        return (
-            <React.Fragment>
-                <div className='container'>
-                    <Booklist books={this.props.books} />
-                </div>
-            </React.Fragment>
-        );
-    }
-}
+// function Books(props) {
+//     console.log(props.books);
+//     return (
+//         <React.Fragment>
 
-export default Books;
+//         </React.Fragment>
+//     );
+// }
+
+// export default Books;
